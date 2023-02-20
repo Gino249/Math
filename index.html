@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+        <title>Student Attendance</title>
+        <style>
+            body {
+    background:#778899;
+    color:#DCDCDC;
+    text-shadow:1px 1px 1px black;
+    font-family: 'Poppins', sans-serif;
+
+}
+input{
+display:block;
+border:1px solid black;
+width:10em;
+height:2em;
+font-size:2em;
+}
+div{
+margin-top:5%;
+margin-left:25%;
+}
+label{
+font-size:2em;
+font-weight:bold;
+}
+.main{
+margin-top:15%;
+margin-left:0;
+}
+h2, h3{
+text-align:center;
+font-size:4em;
+}
+#sub{
+    margin-top:-7.5%;
+    margin-left:60%;
+    background:#7FFFD4;
+    border-style:none;
+    border:1px solid black;
+    border-radius:10px;
+    padding:3px;
+    width:150px;
+    height:70px;
+    font-size:2em;
+}
+
+#reset{
+margin-top:10%;
+    margin-left:25%;
+    background:#CD5C5C;
+    border-radius:10px;
+    padding:3px;
+    width:150px;
+    height:70px;
+    font-size:2em;
+}
+#date, #time{
+width:7em;
+}
+        </style>
+    </head>
+    <body>
+    <h2>Student Attendance</h2>
+    <h3>with <span style="color:blue">G</span><span style="color:red">o</span><span style="color:orange">o</span><span style="color:blue">g</span><span style="color:green">l</span><span style="color:red;">e</span> <span style="color:#7FFFD4">Sheet</span></h3>
+    <div class="main">
+        <form action="https://sheetdb.io/api/v1/o81ei6wrke34g" method="post" id="sheetdb-form">
+        <div><label>Name:</label><input style="width:15em" type="text" name="data[name]"/></div>
+        <div><label>Strand:</label><input style="width:7em" type="text" name="data[strand]"/></div>
+       <div><label>Date:</label><input id="date" type="date" name="data[date]"/></div>
+        <div><label>Time:</label><input id="time" type="time" name="data[time]"/></div>
+         <input id="reset"type="reset"/>
+            <input id="sub"type="submit"/>
+        </form>
+        </div>
+        <script>
+            var form = document.getElementById('sheetdb-form');
+ form.addEventListener("submit", e => { 
+e.preventDefault();
+ fetch(form.action, {
+  method : "POST",
+   body: new FormData(document.getElementById("sheetdb-form")),
+    }).then(
+     response => response.json()
+      ).then((html) => {
+       alert("success");
+       });
+        });
+        </script>
+    </body>
+</html>
